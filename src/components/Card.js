@@ -5,9 +5,9 @@ import classes from './Card.module.css'
 const Card = (props) => {
     return (
         <div className={classes.Card}>
-            <img src="https://restcountries.eu/data/afg.svg" alt="" />
+            <img src={props.country.flag.svgFile} alt={`${props.country.name}'s Flag`} />
             <div className={classes.Content}>
-                Card
+                {props.country.name}
             </div>
         </div>
     )
