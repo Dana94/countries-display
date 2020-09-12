@@ -3,17 +3,27 @@ import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
-import Card from './components/Card';
+import Cards from './components/Cards/Cards';
 
 function App() {
 
   const GET_COUNTRIES = gql`
     query GetCountry {
       Country {
-        name
         _id
+        name
+        population
+        nativeName
+        capital
         flag {
           svgFile
+        }
+        officialLanguages {
+          name
+        }
+        currencies {
+          name
+          _id
         }
       }
     }
@@ -27,9 +37,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {
-          data.Country.map(country => <Card country={country} key={country._id}/>)
-        }
+        <Cards countries={data.Country} />
       </header>
     </div>
   );
