@@ -3,10 +3,11 @@
     position: relative;
     width: 25%;
     background-color: white;
-    height: 14rem; /*edit*/
+    /* height: 14rem;*/
     border-radius: 10px;
     color: #282c34;
     box-shadow: 0 3px 6px rgba(149,157,165,.15);
+    margin: 2rem 1.5rem;
 }
 
 img {
@@ -19,4 +20,16 @@ img {
 
 .Content {
     margin-top: 25%;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+li {
+    margin-left: .5rem;
 }
