@@ -1,0 +1,13 @@
+.Cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    /* display: -ms-grid;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    column-gap: 1.5rem;
+    row-gap: 5.5rem; */
+
+    width: 85%;
+}

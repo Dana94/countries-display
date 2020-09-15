@@ -1,0 +1,55 @@
+.Card {
+    padding: 1rem;
+    position: relative;
+    width: 25%;
+    background-color: white;
+    /* height: 14rem;*/
+    border-radius: 10px;
+    color: #282c34;
+    box-shadow: 0 3px 6px rgba(149,157,165,.15);
+    margin-bottom: 4rem;
+}
+
+img {
+    position: absolute;
+    width: 50%;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 6px rgba(149,157,165,.15);
+}
+
+.Content {
+    margin-top: 25%;
+}
+
+ul.List {
+    padding: 0;
+    list-style: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0;
+}
+
+ul.Currency {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+li {
+    margin-left: .5rem;
+}
+
+@media (max-width: 768px) {
+    .Card {
+        width: 40%;
+    }
+}
+
+@media (max-width: 500px) {
+    .Card {
+        width: 100%;
+    }
+}
