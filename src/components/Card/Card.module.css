@@ -16,19 +16,23 @@ img {
     top: 1rem;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0 3px 6px rgba(149,157,165,.15);
 }
 
 .Content {
     margin-top: 25%;
 }
 
-ul {
+ul.List {
     padding: 0;
     list-style: none;
     font-size: 1rem;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 0;
+}
+
+ul.Currency {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
