@@ -12,9 +12,6 @@ function App() {
       Country {
         _id
         name
-        population
-        nativeName
-        capital
         flag {
           svgFile
         }
