@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
+import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Menu />
         <Cards countries={data.Country} />
       </header>
     </div>
