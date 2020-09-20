@@ -10,25 +10,37 @@
     background-color: blueviolet;
     position: fixed;
     width: inherit;
-    height: 40%;
-    overflow: scroll;
+    height: 60%;
+
 }
 
 .Langs {
-    display: grid;
-    grid-template-columns: auto auto;
+    /* display: grid;
+    grid-template-columns: auto auto; */
+    text-align: left;
+
 }
 
 .Lang {
-    display: flex;
+    /* display: flex; */
+    /* text-align: left; */
 }
 
 fieldset {
     border: none;
-    height: 60%;
-    overflow: scroll;
+    height: 30%;
+    overflow-x: hidden;
+}
+
+fieldset.population {
+    height: 10%;
 }
 
 label {
     text-align: left;
+}
+
+.populationRange {
+    display: block;
+    margin: auto;
 }
