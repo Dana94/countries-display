@@ -27,16 +27,43 @@ function App() {
     }
   `;
 
-  const { loading, error, data } = useQuery(GET_COUNTRIES);
+  const GET_LANGUAGES = gql`
+    query GetLanguages {
+      Language {
+        name
+        _id
+        countries {
+          _id
+        }
+      }
+    }
+  `;
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  const GET_CURRENCIES = gql`
+    query GetCurrencies {
+      Currency{
+        _id
+        name
+        countries {
+          _id
+        }
+      }
+    }
+  `;
+
+
+  const countries = useQuery(GET_COUNTRIES);
+  const languages = useQuery(GET_LANGUAGES);
+  const currencies = useQuery(GET_CURRENCIES);
+
+  if (countries.loading || languages.loading || currencies.loading) return <p>Loading...</p>;
+  if (countries.error || languages.error || currencies.error) return <p>Error :(</p>;
 
   return (
     <div className="App">
       <header className="App-header">
-        <Menu />
-        <Cards countries={data.Country} />
+        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+        <Cards countries={countries.data.Country} />
       </header>
     </div>
   );
