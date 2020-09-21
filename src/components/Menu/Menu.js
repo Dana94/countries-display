@@ -9,7 +9,7 @@ const Menu = props => {
                 {/* <div> */}
                     Menu Filters
                 <hr />
-                    <fieldset>
+                    <fieldset className={classes.Scroll}>
                         <legend>Languages</legend>
                         <div className={classes.Langs}>
                             {
@@ -30,7 +30,7 @@ const Menu = props => {
                     <fieldset className={classes.population}>
                         <label htmlFor="population">Population</label>
                         <input type="range" id="population" className={classes.populationRange} name="population" min="0" max="11" list="tickmarks" />
-                        <datalist id="tickmarks">
+                        {/* <datalist id="tickmarks">
                             <option value="0" label="0%"></option>
                             <option value="10"></option>
                             <option value="20"></option>
@@ -42,10 +42,10 @@ const Menu = props => {
                             <option value="80"></option>
                             <option value="90"></option>
                             <option value="100" label="100%"></option>
-                        </datalist>
+                        </datalist> */}
                     </fieldset>
                     <hr />
-                    <fieldset>
+                    <fieldset className={classes.Scroll}>
                         <legend>Currencies</legend>
                         <div className={classes.Langs}>
                             {

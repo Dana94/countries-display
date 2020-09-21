@@ -7,7 +7,7 @@
 }
 
 .Filters {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     position: fixed;
     width: inherit;
     height: 60%;
@@ -34,6 +34,20 @@ fieldset {
 
 fieldset.population {
     height: 10%;
+}
+
+fieldset.Scroll::-webkit-scrollbar {
+    width: 6px;
+    background-color: #FFFFFF;
+}
+
+fieldset.Scroll::-webkit-scrollbar-thumb {
+    background-color: #0f7afb;
+}
+
+fieldset.Scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #FFFFFF;
 }
 
 label {
