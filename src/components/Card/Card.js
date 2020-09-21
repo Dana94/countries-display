@@ -9,8 +9,9 @@ const Card = (props) => {
             <img src={props.country.flag.svgFile} alt={`${props.country.name}'s Flag`} />
             <div className={classes.Content}>
                 <p>{props.country.name}</p>
+                <p>{props.country.population}</p>
             </div>
-                {/* <ul className={classes.List}>
+            {/* <ul className={classes.List}>
                     {
                         props.country.officialLanguages.slice(0, 2).map(lang => <li key={lang.name}>{lang.name}</li>)
                     }

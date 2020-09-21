@@ -23,6 +23,7 @@ function App() {
           name
           _id
         }
+        population
       }
     }
   `;
@@ -59,10 +60,26 @@ function App() {
   if (countries.loading || languages.loading || currencies.loading) return <p>Loading...</p>;
   if (countries.error || languages.error || currencies.error) return <p>Error :(</p>;
 
+
+  let maxPopulation = 0;
+  let minPopulation = 0;
+
+  countries.data.Country.forEach(country => {
+    if (minPopulation === 0) {
+      minPopulation = country.population
+    }
+    if (country.population > maxPopulation) {
+      maxPopulation = country.population;
+    }
+    else if (country.population < minPopulation) {
+      minPopulation = country.population;
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} maxPopulation={maxPopulation} minPopulation={minPopulation} />
         <Cards countries={countries.data.Country} />
       </header>
     </div>

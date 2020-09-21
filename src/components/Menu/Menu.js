@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import classes from './Menu.module.css';
 
 const Menu = props => {
-    const [population, setPopulation] = useState(8);
+    const [population, setPopulation] = useState(props.maxPopulation);
 
     return (
         <div className={classes.Menu}>
@@ -36,8 +36,9 @@ const Menu = props => {
                         id="population"
                         className={classes.populationRange}
                         name="population"
-                        min="0"
-                        max="11"
+                        min={props.minPopulation}
+                        max={props.maxPopulation}
+                        step={500000}
                         onChange={event => setPopulation(event.target.value)}
                     />
                 </fieldset>
