@@ -4,6 +4,8 @@ import classes from './Menu.module.css';
 
 const Menu = props => {
     const [population, setPopulation] = useState(props.maxPopulation);
+    const [languages, setLanguages] = useState([]);
+    const [currencies, setCurrencies] = useState([]);
 
     return (
         <div className={classes.Menu}>
@@ -18,7 +20,25 @@ const Menu = props => {
                             props.languages.map(lang => {
                                 return (
                                     <div key={lang._id} className={classes.Lang}>
-                                        <input id={lang._id} type="checkbox" name={lang.name} value={lang._id} />
+                                        <input
+                                            id={lang._id}
+                                            type="checkbox"
+                                            name={lang.name}
+                                            value={lang._id}
+                                            onChange={event => {
+                                                if (event.target.checked) {
+                                                    setLanguages(prevState => {
+                                                        prevState.push(lang._id);
+                                                        return prevState;
+                                                    });
+                                                } else {
+                                                    setLanguages(prevState => {
+                                                        return prevState.filter(id => id !== lang._id);
+                                                    });
+                                                }
+                                                props.selectLanguages = languages;
+                                            }}
+                                        />
                                         <label htmlFor={lang._id}>{lang.name}</label>
                                     </div>
                                 )
