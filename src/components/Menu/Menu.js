@@ -30,7 +30,7 @@ const Menu = props => {
                 </div>
                 <hr />
                 <fieldset className={classes.population}>
-                    <label htmlFor="population">Population</label> {population}
+                    <label htmlFor="population">Population</label> {Math.floor(population)}
                     <input
                         type="range"
                         id="population"
@@ -38,7 +38,7 @@ const Menu = props => {
                         name="population"
                         min={props.minPopulation}
                         max={props.maxPopulation}
-                        step={500000}
+                        step="any"
                         onChange={event => setPopulation(event.target.value)}
                     />
                 </fieldset>
