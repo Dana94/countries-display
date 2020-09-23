@@ -36,7 +36,6 @@ const Menu = props => {
                                                         return prevState.filter(id => id !== lang._id);
                                                     });
                                                 }
-                                                props.selectLanguages = languages;
                                             }}
                                         />
                                         <label htmlFor={lang._id}>{lang.name}</label>
