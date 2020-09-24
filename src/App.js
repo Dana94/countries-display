@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
+import {FilterContext} from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 
 function App() {
+
+  const filterContext = useContext(FilterContext);
+
+  // population filter (ex: population_gt)
+  // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
+  // language filter (ex: officialLanguages_in: {iso639_2_in: ["ara"]})
 
   const GET_COUNTRIES = gql`
     query GetCountry {
@@ -33,6 +40,7 @@ function App() {
       Language {
         name
         _id
+        iso639_2
         countries {
           _id
         }
@@ -44,6 +52,7 @@ function App() {
     query GetCurrencies {
       Currency{
         _id
+        code
         name
         countries {
           _id
@@ -79,6 +88,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {/* {filterContext.population} */}
         <Menu languages={languages.data.Language} currencies={currencies.data.Currency} maxPopulation={maxPopulation} minPopulation={minPopulation}
         selectLanguages={event => event.target.value} />
         <Cards countries={countries.data.Country} />

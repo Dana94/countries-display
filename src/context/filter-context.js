@@ -7,12 +7,12 @@ export const FilterContext = React.createContext({
 });
 
 const FilterContextProvider = props => {
-    const [languages, setLanguages] = useState([]);
-    const [population, setPopulation] = useState(0);
-    const [currencies, setCurrencies] = useState([]);
+    const [filterLanguages, setFilterLanguages] = useState([]);
+    const [filterPopulation, setPopulation] = useState(0);
+    const [filterCurrencies, setCurrencies] = useState([]);
 
     return (
-        <FilterContext.Provider value={{languages: languages, population: population, currencies: currencies}}>
+        <FilterContext.Provider value={{ languages: filterLanguages, population: filterPopulation, currencies: filterCurrencies }}>
             {props.children}
         </FilterContext.Provider>
     )
