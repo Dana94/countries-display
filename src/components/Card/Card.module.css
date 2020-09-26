@@ -2,8 +2,8 @@
     padding: 1rem;
     position: relative;
     width: 25%;
+    /* max-width: 14rem; ? */
     background-color: white;
-    /* height: 14rem;*/
     border-radius: 10px;
     color: #282c34;
     box-shadow: 0 3px 6px rgba(149,157,165,.15);

@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
-import {FilterContext} from './context/filter-context';
+import { FilterContext } from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 
@@ -11,13 +11,17 @@ function App() {
 
   const filterContext = useContext(FilterContext);
 
+  console.log(filterContext);
+
   // population filter (ex: population_gt)
   // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
-  // language filter (ex: officialLanguages_in: {iso639_2_in: ["ara"]})
+  // language filter (ex: officialLanguages_some: {iso639_2_in: ["ara"]})
+
+  let filterLang = { officialLanguages_some: { iso639_2_in: filterContext.languages } };
 
   const GET_COUNTRIES = gql`
-    query GetCountry {
-      Country {
+    query GetCountry($filter: _CountryFilter) {
+      Country(filter: $filter) {
         _id
         name
         flag {
@@ -62,12 +66,26 @@ function App() {
   `;
 
 
-  const countries = useQuery(GET_COUNTRIES);
+  const countries = useQuery(GET_COUNTRIES, {
+    variables: {
+      filter: filterLang
+    }
+  });
   const languages = useQuery(GET_LANGUAGES);
   const currencies = useQuery(GET_CURRENCIES);
 
-  if (countries.loading || languages.loading || currencies.loading) return <p>Loading...</p>;
-  if (countries.error || languages.error || currencies.error) return <p>Error :(</p>;
+  if (countries.loading || languages.loading || currencies.loading) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>Loading...</p>;
+        </header>
+      </div>
+    );
+  }
+  if (countries.error || languages.error || currencies.error) {
+    return <p>Error :(</p>;
+  }
 
 
   let maxPopulation = 0;
@@ -89,8 +107,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* {filterContext.population} */}
-        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} maxPopulation={maxPopulation} minPopulation={minPopulation}
-        selectLanguages={event => event.target.value} />
+        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} maxPopulation={maxPopulation} minPopulation={minPopulation}/>
         <Cards countries={countries.data.Country} />
       </header>
     </div>

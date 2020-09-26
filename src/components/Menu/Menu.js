@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import classes from './Menu.module.css';
+import {FilterContext} from '../../context/filter-context'
 
 const Menu = props => {
     const [population, setPopulation] = useState(props.maxPopulation);
-    const [languages, setLanguages] = useState([]);
     const [currencies, setCurrencies] = useState([]);
+
+    const filterContext = useContext(FilterContext);
+
+    const addLangHandler = (langId) => {
+        filterContext.addLanguage(langId);
+    }
 
     return (
         <div className={classes.Menu}>
             <div className={classes.Filters}>
                 {/* <div> */}
-                    Menu Filters
+                Menu Filters
                 <hr />
                 <fieldset className={classes.Scroll}>
                     <legend>Languages</legend>
@@ -27,14 +33,9 @@ const Menu = props => {
                                             value={lang._id}
                                             onChange={event => {
                                                 if (event.target.checked) {
-                                                    setLanguages(prevState => {
-                                                        prevState.push(lang._id);
-                                                        return prevState;
-                                                    });
+                                                    addLangHandler(lang.iso639_2)
                                                 } else {
-                                                    setLanguages(prevState => {
-                                                        return prevState.filter(id => id !== lang._id);
-                                                    });
+
                                                 }
                                             }}
                                         />
