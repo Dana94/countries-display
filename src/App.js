@@ -6,15 +6,13 @@ import './App.css';
 import { FilterContext } from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
+import Loading from './components/Loading/Loading';
 
 function App() {
 
   const filterContext = useContext(FilterContext);
 
   // console.log(filterContext);
-
-  // population filter (ex: population_gt)
-  // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
 
   const GET_LANGUAGES = gql`
     query GetLanguages {
@@ -52,7 +50,7 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          Loading...
+          <Loading />
         </header>
       </div>
     );

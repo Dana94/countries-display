@@ -4,12 +4,17 @@ import { useQuery, gql } from '@apollo/client';
 import { FilterContext } from '../../context/filter-context';
 import classes from './Cards.module.css'
 import Card from '../Card/Card';
+import Loading from '../Loading/Loading';
+
 
 const Cards = (props) => {
 
     const filterContext = useContext(FilterContext);
 
     console.log(filterContext);
+
+    // population filter (ex: population_gt)
+    // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
 
     let filterLang = { officialLanguages_some: { iso639_2_in: filterContext.languages } };
 
@@ -34,17 +39,17 @@ const Cards = (props) => {
     `;
 
     const countries = useQuery(GET_COUNTRIES,
-         {
-        variables: {
-            filter: filterLang
+        {
+            variables: {
+                filter: filterLang
+            }
         }
-    }
     );
 
     if (countries.loading) {
         return (
             <div className={classes.Cards}>
-                Loading Countries...
+                <Loading />
             </div>
         );
     }
