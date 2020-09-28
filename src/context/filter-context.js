@@ -18,11 +18,17 @@ const FilterContextProvider = props => {
         setFilterLanguages(newLangs);
     }
 
+    const removeLanguageHandler = (lang) => {
+        const newLangs = filterLanguages.filter(code => lang !== code);
+        setFilterLanguages(newLangs);
+    }
+
     return (
         <FilterContext.Provider
             value={{
                 languages: filterLanguages,
                 addLanguage: addLanguageHandler,
+                removeLanguage: removeLanguageHandler,
                 population: filterPopulation,
                 currencies: filterCurrencies
             }}>

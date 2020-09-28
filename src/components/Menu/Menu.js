@@ -13,6 +13,10 @@ const Menu = React.memo(props => {
         filterContext.addLanguage(langId);
     }
 
+    const removeLangHandler = (langId) => {
+        filterContext.removeLanguage(langId);
+    }
+
     return (
         <div className={classes.Menu}>
             <div className={classes.Filters}>
@@ -35,7 +39,7 @@ const Menu = React.memo(props => {
                                                 if (event.target.checked) {
                                                     addLangHandler(lang.iso639_2)
                                                 } else {
-
+                                                    removeLangHandler(lang.iso639_2)
                                                 }
                                             }}
                                         />
