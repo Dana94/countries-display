@@ -9,6 +9,8 @@ const Menu = React.memo(props => {
 
     const filterContext = useContext(FilterContext);
 
+    console.log(filterContext.languages);
+
     const addLangHandler = (langId) => {
         filterContext.addLanguage(langId);
     }
@@ -25,6 +27,19 @@ const Menu = React.memo(props => {
                 <hr />
                 <fieldset className={classes.Scroll}>
                     <legend>Languages</legend>
+                    <input
+                        id="select_lang"
+                        type="checkbox"
+                        name="select_lang"
+                        onChange={event => {
+                            if (event.target.checked) {
+                                console.log('select all')
+                            } else {
+                                console.log('remove all')
+                            }
+                        }}
+                    />
+                    <label htmlFor="select_lang">Select all</label>
                     <div className={classes.Langs}>
                         {
                             props.languages.map(lang => {
@@ -34,7 +49,7 @@ const Menu = React.memo(props => {
                                             id={lang._id}
                                             type="checkbox"
                                             name={lang.name}
-                                            value={lang._id}
+                                            checked={filterContext.languages.includes(lang.iso639_2)}
                                             onChange={event => {
                                                 if (event.target.checked) {
                                                     addLangHandler(lang.iso639_2)
