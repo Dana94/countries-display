@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import classes from './Menu.module.css';
 import {FilterContext} from '../../context/filter-context'
 
-const Menu = props => {
+const Menu = React.memo(props => {
     const [population, setPopulation] = useState(props.maxPopulation);
     const [currencies, setCurrencies] = useState([]);
 
@@ -82,6 +82,6 @@ const Menu = props => {
             </div>
         </div>
     )
-}
+});
 
 export default Menu;

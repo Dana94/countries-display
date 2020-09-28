@@ -11,33 +11,10 @@ function App() {
 
   const filterContext = useContext(FilterContext);
 
-  console.log(filterContext);
+  // console.log(filterContext);
 
   // population filter (ex: population_gt)
   // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
-  // language filter (ex: officialLanguages_some: {iso639_2_in: ["ara"]})
-
-  let filterLang = { officialLanguages_some: { iso639_2_in: filterContext.languages } };
-
-  const GET_COUNTRIES = gql`
-    query GetCountry($filter: _CountryFilter) {
-      Country(filter: $filter) {
-        _id
-        name
-        flag {
-          svgFile
-        }
-        officialLanguages {
-          name
-        }
-        currencies {
-          name
-          _id
-        }
-        population
-      }
-    }
-  `;
 
   const GET_LANGUAGES = gql`
     query GetLanguages {
@@ -65,50 +42,51 @@ function App() {
     }
   `;
 
-
-  const countries = useQuery(GET_COUNTRIES, {
-    variables: {
-      filter: filterLang
-    }
-  });
   const languages = useQuery(GET_LANGUAGES);
   const currencies = useQuery(GET_CURRENCIES);
 
-  if (countries.loading || languages.loading || currencies.loading) {
+  // menu needs lang and currencies, also populations
+  // just show loading on the Cards component
+
+  if (languages.loading || currencies.loading) {
     return (
       <div className="App">
         <header className="App-header">
-          <p>Loading...</p>;
+          Loading...
         </header>
       </div>
     );
   }
-  if (countries.error || languages.error || currencies.error) {
-    return <p>Error :(</p>;
+  if (languages.error || currencies.error) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>Error :(</p>
+        </header>
+      </div>
+    );
   }
 
+  // let maxPopulation = 0;
+  // let minPopulation = 0;
 
-  let maxPopulation = 0;
-  let minPopulation = 0;
-
-  countries.data.Country.forEach(country => {
-    if (minPopulation === 0) {
-      minPopulation = country.population
-    }
-    if (country.population > maxPopulation) {
-      maxPopulation = country.population;
-    }
-    else if (country.population < minPopulation) {
-      minPopulation = country.population;
-    }
-  });
+  // countries.data.Country.forEach(country => {
+  //   if (minPopulation === 0) {
+  //     minPopulation = country.population
+  //   }
+  //   if (country.population > maxPopulation) {
+  //     maxPopulation = country.population;
+  //   }
+  //   else if (country.population < minPopulation) {
+  //     minPopulation = country.population;
+  //   }
+  // });
 
   return (
     <div className="App">
       <header className="App-header">
-        {/* {filterContext.population} */}
-        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} maxPopulation={maxPopulation} minPopulation={minPopulation}/>
-        <Cards countries={countries.data.Country} />
+        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+        <Cards />
       </header>
     </div>
   );
