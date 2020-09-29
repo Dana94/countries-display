@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 export const FilterContext = React.createContext({
     languages: [],
-    addLanguage: () => {},
     population: null,
     currencies: []
 });
@@ -22,6 +21,9 @@ const FilterContextProvider = props => {
         const newLangs = filterLanguages.filter(code => lang !== code);
         setFilterLanguages(newLangs);
     }
+    const toggleSelectAllHandler = (selectAll, allLanguages) => {
+        selectAll ? setFilterLanguages(allLanguages) : setFilterLanguages([]);
+    }
 
     return (
         <FilterContext.Provider
@@ -29,6 +31,7 @@ const FilterContextProvider = props => {
                 languages: filterLanguages,
                 addLanguage: addLanguageHandler,
                 removeLanguage: removeLanguageHandler,
+                toggleSelectAll: toggleSelectAllHandler,
                 population: filterPopulation,
                 currencies: filterCurrencies
             }}>

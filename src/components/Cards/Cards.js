@@ -11,7 +11,7 @@ const Cards = (props) => {
 
     const filterContext = useContext(FilterContext);
 
-    console.log(filterContext);
+    // console.log(filterContext);
 
     // population filter (ex: population_gt)
     // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})

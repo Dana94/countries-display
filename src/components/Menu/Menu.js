@@ -9,14 +9,16 @@ const Menu = React.memo(props => {
 
     const filterContext = useContext(FilterContext);
 
-    console.log(filterContext.languages);
+    // console.log(filterContext.languages);
 
-    const addLangHandler = (langId) => {
-        filterContext.addLanguage(langId);
-    }
-
-    const removeLangHandler = (langId) => {
-        filterContext.removeLanguage(langId);
+    const toggleSelectAll = (selectAll) => {
+        if(selectAll) {
+            // assign props.languages to filtercontext languages
+            filterContext.toggleSelectAll(true, props.languages.map(lang => lang.iso639_2));
+        } else {
+            // empty filter context list
+            filterContext.toggleSelectAll(false);
+        }
     }
 
     return (
@@ -31,13 +33,7 @@ const Menu = React.memo(props => {
                         id="select_lang"
                         type="checkbox"
                         name="select_lang"
-                        onChange={event => {
-                            if (event.target.checked) {
-                                console.log('select all')
-                            } else {
-                                console.log('remove all')
-                            }
-                        }}
+                        onChange={event => toggleSelectAll(event.target.checked) }
                     />
                     <label htmlFor="select_lang">Select all</label>
                     <div className={classes.Langs}>
@@ -52,9 +48,9 @@ const Menu = React.memo(props => {
                                             checked={filterContext.languages.includes(lang.iso639_2)}
                                             onChange={event => {
                                                 if (event.target.checked) {
-                                                    addLangHandler(lang.iso639_2)
+                                                    filterContext.addLanguage(lang.iso639_2);
                                                 } else {
-                                                    removeLangHandler(lang.iso639_2)
+                                                    filterContext.removeLanguage(lang.iso639_2);
                                                 }
                                             }}
                                         />
