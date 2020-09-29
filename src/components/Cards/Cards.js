@@ -14,9 +14,11 @@ const Cards = (props) => {
     // console.log(filterContext);
 
     // population filter (ex: population_gt)
-    // currency filter (ex: filter: {currencies_in: {code_in: ["DZD", "ARS"]}})
 
-    let filterLang = { officialLanguages_some: { iso639_2_in: filterContext.languages } };
+    let filters = {
+        officialLanguages_some: { iso639_2_in: filterContext.languages },
+        currencies_some: { code_in: filterContext.currencies }
+    };
 
     const GET_COUNTRIES = gql`
         query GetCountry($filter: _CountryFilter) {
@@ -41,7 +43,7 @@ const Cards = (props) => {
     const countries = useQuery(GET_COUNTRIES,
         {
             variables: {
-                filter: filterLang
+                filter: filters
             }
         }
     );
