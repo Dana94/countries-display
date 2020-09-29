@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import classes from './Menu.module.css';
-import {FilterContext} from '../../context/filter-context'
+import { FilterContext } from '../../context/filter-context'
 
 const Menu = React.memo(props => {
     const [population, setPopulation] = useState(props.maxPopulation);
@@ -12,7 +12,7 @@ const Menu = React.memo(props => {
     // console.log(filterContext.languages);
 
     const toggleSelectAll = (selectAll) => {
-        if(selectAll) {
+        if (selectAll) {
             // assign props.languages to filtercontext languages
             filterContext.toggleSelectAll(true, props.languages.map(lang => lang.iso639_2));
         } else {
@@ -33,7 +33,7 @@ const Menu = React.memo(props => {
                         id="select_lang"
                         type="checkbox"
                         name="select_lang"
-                        onChange={event => toggleSelectAll(event.target.checked) }
+                        onChange={event => toggleSelectAll(event.target.checked)}
                     />
                     <label htmlFor="select_lang">Select all</label>
                     <div className={classes.Langs}>
@@ -46,13 +46,7 @@ const Menu = React.memo(props => {
                                             type="checkbox"
                                             name={lang.name}
                                             checked={filterContext.languages.includes(lang.iso639_2)}
-                                            onChange={event => {
-                                                if (event.target.checked) {
-                                                    filterContext.addLanguage(lang.iso639_2);
-                                                } else {
-                                                    filterContext.removeLanguage(lang.iso639_2);
-                                                }
-                                            }}
+                                            onChange={event => filterContext.toggleSelect(event.target.checked, lang.iso639_2)}
                                         />
                                         <label htmlFor={lang._id}>{lang.name}</label>
                                     </div>
