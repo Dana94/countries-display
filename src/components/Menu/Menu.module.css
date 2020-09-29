@@ -1,0 +1,60 @@
+.Menu {
+    background-color: rgb(46, 46, 102);
+    color: white;
+    width: 15%;
+    font-size: 1rem;
+
+}
+
+.Filters {
+    /* background-color: blueviolet; */
+    position: fixed;
+    width: inherit;
+    height: 60%;
+
+}
+
+.Langs {
+    /* display: grid;
+    grid-template-columns: auto auto; */
+    text-align: left;
+
+}
+
+.Lang {
+    /* display: flex; */
+    /* text-align: left; */
+}
+
+fieldset {
+    border: none;
+    height: 30%;
+    overflow-x: hidden;
+}
+
+fieldset.population {
+    height: 10%;
+}
+
+fieldset.Scroll::-webkit-scrollbar {
+    width: 6px;
+    background-color: #FFFFFF;
+}
+
+fieldset.Scroll::-webkit-scrollbar-thumb {
+    background-color: #0f7afb;
+}
+
+fieldset.Scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #FFFFFF;
+}
+
+label {
+    text-align: left;
+}
+
+.populationRange {
+    display: block;
+    margin: auto;
+}

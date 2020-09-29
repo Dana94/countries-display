@@ -6,17 +6,21 @@ import * as serviceWorker from './serviceWorker';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
+import FilterContextProvider from './context/filter-context';
+
 const client = new ApolloClient({
   uri: 'https://countries-274616.ew.r.appspot.com/',
   cache: new InMemoryCache()
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ApolloProvider>,
+  <FilterContextProvider>
+    <ApolloProvider client={client}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ApolloProvider>
+  </FilterContextProvider>,
   document.getElementById('root')
 );
 
