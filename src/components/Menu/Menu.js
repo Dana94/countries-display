@@ -77,8 +77,8 @@ const Menu = React.memo(props => {
                         {
                             props.currencies.map(curr => {
                                 // for some reason the API has "null" as a currency :/
-                                if(curr.name === "null") {
-                                    return;
+                                if (curr.name === "null") {
+                                    return null;
                                 }
                                 return (
                                     <div key={curr._id} className={classes.Lang}>
