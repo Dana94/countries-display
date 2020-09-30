@@ -1,18 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import classes from './Menu.module.css';
 import { FilterContext } from '../../context/filter-context'
 
 const Menu = React.memo(props => {
-    const [population, setPopulation] = useState(props.maxPopulation);
-    const [currencies, setCurrencies] = useState([]);
+    // const [population, setPopulation] = useState(props.maxPopulation);
+    // const [currencies, setCurrencies] = useState([]);
 
     const filterContext = useContext(FilterContext);
-
-    // console.log(filterContext.languages);
-
-    // filterContext.setLanguages(props.languages);
-
+    
+    useEffect(() => {
+        filterContext.setLanguages(props.languages.map(lang => lang.iso639_2));
+    }, [])
 
     return (
         <div className={classes.Menu}>
@@ -25,6 +24,7 @@ const Menu = React.memo(props => {
                         id="select_lang"
                         type="checkbox"
                         name="select_lang"
+                        checked={filterContext.selectAllLanguages}
                         onChange={event => filterContext.toggleSelectAll(event.target.checked, "language", props.languages.map(lang => lang.iso639_2))}
                     />
                     <label htmlFor="select_lang">Select all</label>
@@ -51,7 +51,7 @@ const Menu = React.memo(props => {
                 </div>
                 <hr />
                 <fieldset className={classes.population}>
-                    <label htmlFor="population">Population</label> {Math.floor(population)}
+                    {/* <label htmlFor="population">Population</label> {Math.floor(population)} */}
                     <input
                         type="range"
                         id="population"
@@ -60,7 +60,7 @@ const Menu = React.memo(props => {
                         min={props.minPopulation}
                         max={props.maxPopulation}
                         step="any"
-                        onChange={event => setPopulation(event.target.value)}
+                    // onChange={event => setPopulation(event.target.value)}
                     />
                 </fieldset>
                 <hr />
