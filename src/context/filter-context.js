@@ -10,6 +10,7 @@ const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
     const [filterPopulation, setPopulation] = useState(0);
     const [filterCurrencies, setFilterCurrencies] = useState([]);
+    const [selectAllLanguages, setSelectAllLanguages] = useState(true);
 
     const toggleSelectHandler = (select, listType, item) => {
         let newList;
@@ -24,9 +25,11 @@ const FilterContextProvider = props => {
 
     const toggleSelectAllHandler = (selectAll, listType, allItems) => {
         if (selectAll) {
+            // setSelectAllLanguages(true);
             listType === "language" ? setFilterLanguages(allItems) : setFilterCurrencies(allItems);
         }
         else {
+            // setSelectAllLanguages(true);
             listType === "language" ? setFilterLanguages([]) : setFilterCurrencies([]);
         }
     }
@@ -38,7 +41,8 @@ const FilterContextProvider = props => {
                 toggleSelectAll: toggleSelectAllHandler,
                 toggleSelect: toggleSelectHandler,
                 population: filterPopulation,
-                currencies: filterCurrencies
+                currencies: filterCurrencies,
+                selectAllLanguages: selectAllLanguages
             }}>
             {props.children}
         </FilterContext.Provider>

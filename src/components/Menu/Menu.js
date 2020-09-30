@@ -9,12 +9,14 @@ const Menu = React.memo(props => {
 
     const filterContext = useContext(FilterContext);
 
-    // console.log(filterContext.currencies);
+    // console.log(filterContext.languages);
+
+    // filterContext.setLanguages(props.languages);
+
 
     return (
         <div className={classes.Menu}>
             <div className={classes.Filters}>
-                {/* <div> */}
                 Menu Filters
                 <hr />
                 <fieldset className={classes.Scroll}>
@@ -94,7 +96,6 @@ const Menu = React.memo(props => {
                         }
                     </div>
                 </fieldset>
-                {/* </div> */}
             </div>
         </div>
     )

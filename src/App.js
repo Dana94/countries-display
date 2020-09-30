@@ -44,7 +44,6 @@ function App() {
   const currencies = useQuery(GET_CURRENCIES);
 
   // menu needs lang and currencies, also populations
-  // just show loading on the Cards component
 
   if (languages.loading || currencies.loading) {
     return (
