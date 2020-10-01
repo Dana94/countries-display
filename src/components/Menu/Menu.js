@@ -8,9 +8,10 @@ const Menu = React.memo(props => {
     // const [currencies, setCurrencies] = useState([]);
 
     const filterContext = useContext(FilterContext);
-    
+
     useEffect(() => {
         filterContext.setLanguages(props.languages.map(lang => lang.iso639_2));
+        filterContext.setCurrencies(props.currencies.map(curr => curr.code));
     }, [])
 
     return (
@@ -20,15 +21,17 @@ const Menu = React.memo(props => {
                 <hr />
                 <fieldset className={classes.Scroll}>
                     <legend>Languages</legend>
-                    <input
-                        id="select_lang"
-                        type="checkbox"
-                        name="select_lang"
-                        checked={filterContext.selectAllLanguages}
-                        onChange={event => filterContext.toggleSelectAll(event.target.checked, "language", props.languages.map(lang => lang.iso639_2))}
-                    />
-                    <label htmlFor="select_lang">Select all</label>
                     <div className={classes.Langs}>
+                        <div>
+                            <input
+                                id="select_lang"
+                                type="checkbox"
+                                name="select_lang"
+                                checked={filterContext.selectAllLanguages}
+                                onChange={event => filterContext.toggleSelectAll(event.target.checked, "language", props.languages.map(lang => lang.iso639_2))}
+                            />
+                            <label htmlFor="select_lang">Select all</label>
+                        </div>
                         {
                             props.languages.map(lang => {
                                 return (
@@ -66,14 +69,15 @@ const Menu = React.memo(props => {
                 <hr />
                 <fieldset className={classes.Scroll}>
                     <legend>Currencies</legend>
-                    <input
-                        id="select_currencies"
-                        type="checkbox"
-                        name="select_currencies"
-                        onChange={event => filterContext.toggleSelectAll(event.target.checked, "currency", props.currencies.map(curr => curr.code))}
-                    />
-                    <label htmlFor="select_currencies">Select all</label>
                     <div className={classes.Langs}>
+                        <input
+                            id="select_currencies"
+                            type="checkbox"
+                            name="select_currencies"
+                            checked={filterContext.selectAllCurrencies}
+                            onChange={event => filterContext.toggleSelectAll(event.target.checked, "currency", props.currencies.map(curr => curr.code))}
+                        />
+                        <label htmlFor="select_currencies">Select all</label>
                         {
                             props.currencies.map(curr => {
                                 // for some reason the API has "null" as a currency :/

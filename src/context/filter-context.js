@@ -12,6 +12,8 @@ const FilterContextProvider = props => {
     // const [filterPopulation, setPopulation] = useState(0);
     const [filterCurrencies, setFilterCurrencies] = useState([]);
     const [selectAllLanguages, setSelectAllLanguages] = useState(true);
+    const [selectAllCurrencies, setSelectAllCurrencies] = useState(true);
+
 
     const toggleSelectHandler = (select, listType, item) => {
         let newList;
@@ -28,32 +30,35 @@ const FilterContextProvider = props => {
 
     const toggleSelectAllHandler = (selectAll, listType, allItems) => {
         if (selectAll) {
-            // setSelectAllLanguages(true);
-            setSelectAllLanguages(true) //need currency one
+            listType === "language" ? setSelectAllLanguages(true) : setSelectAllCurrencies(true);
             listType === "language" ? setFilterLanguages(allItems) : setFilterCurrencies(allItems);
         }
         else {
-            // setSelectAllLanguages(true);
-            setSelectAllLanguages(false) //need currency one
+            listType === "language" ? setSelectAllLanguages(false) : setSelectAllCurrencies(false);
             listType === "language" ? setFilterLanguages([]) : setFilterCurrencies([]);
         }
     }
 
     const setLanguages = langs => {
-        setFilterLanguages(langs)
+        setFilterLanguages(langs);
+    }
+
+    const setCurrencies = langs => {
+        setFilterCurrencies(langs);
     }
 
     return (
         <FilterContext.Provider
             value={{
                 languages: filterLanguages,
-                // setSelectAllLangs: setSelectAllLangs,
-                selectAllLanguages: selectAllLanguages,
+                selectAllLanguages,
                 toggleSelectAll: toggleSelectAllHandler,
                 toggleSelect: toggleSelectHandler,
-                setLanguages: setLanguages,
+                setLanguages,
+                setCurrencies,
                 // population: filterPopulation,
                 currencies: filterCurrencies,
+                selectAllCurrencies
             }}>
             {props.children}
         </FilterContext.Provider>
