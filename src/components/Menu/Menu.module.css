@@ -7,23 +7,14 @@
 }
 
 .Filters {
-    /* background-color: blueviolet; */
     position: fixed;
     width: inherit;
     height: 60%;
 
 }
 
-.Langs {
-    /* display: grid;
-    grid-template-columns: auto auto; */
+.List {
     text-align: left;
-
-}
-
-.Lang {
-    /* display: flex; */
-    /* text-align: left; */
 }
 
 fieldset {
@@ -57,4 +48,22 @@ label {
 .populationRange {
     display: block;
     margin: auto;
+}
+
+.FilterTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #0f7afb;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+button:hover {
+    cursor: pointer;
 }

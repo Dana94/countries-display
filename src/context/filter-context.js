@@ -2,38 +2,50 @@ import React, { useState } from 'react';
 
 export const FilterContext = React.createContext({
     languages: [],
-    population: null,
+    // allLanguages: true,
+    // population: null,
     currencies: []
 });
 
 const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
-    const [filterPopulation, setPopulation] = useState(0);
-    const [filterCurrencies, setCurrencies] = useState([]);
+    // const [filterPopulation, setPopulation] = useState(0);
+    const [filterCurrencies, setFilterCurrencies] = useState([]);
 
-    const addLanguageHandler = (lang) => {
-        const newLangs = [...filterLanguages];
-        newLangs.push(lang);
-        setFilterLanguages(newLangs);
+
+    const toggleSelectHandler = (select, listType, item) => {
+        let newList;
+        if (select) {
+            newList = listType === "language" ? [...filterLanguages] : [...filterCurrencies];
+            newList.push(item);
+        } else {
+            newList = listType === "language" ? filterLanguages.filter(code => item !== code) : filterCurrencies.filter(code => item !== code);
+        }
+        listType === "language" ? setFilterLanguages(newList) : setFilterCurrencies(newList);
     }
 
-    const removeLanguageHandler = (lang) => {
-        const newLangs = filterLanguages.filter(code => lang !== code);
-        setFilterLanguages(newLangs);
+    const selectAll = (listType, allItems) => {
+        listType === "language" ? setFilterLanguages(allItems) : setFilterCurrencies(allItems);
     }
-    const toggleSelectAllHandler = (selectAll, allLanguages) => {
-        selectAll ? setFilterLanguages(allLanguages) : setFilterLanguages([]);
+
+    const setLanguages = langs => {
+        setFilterLanguages(langs);
+    }
+
+    const setCurrencies = langs => {
+        setFilterCurrencies(langs);
     }
 
     return (
         <FilterContext.Provider
             value={{
                 languages: filterLanguages,
-                addLanguage: addLanguageHandler,
-                removeLanguage: removeLanguageHandler,
-                toggleSelectAll: toggleSelectAllHandler,
-                population: filterPopulation,
-                currencies: filterCurrencies
+                selectAll,
+                toggleSelect: toggleSelectHandler,
+                setLanguages,
+                setCurrencies,
+                // population: filterPopulation,
+                currencies: filterCurrencies,
             }}>
             {props.children}
         </FilterContext.Provider>

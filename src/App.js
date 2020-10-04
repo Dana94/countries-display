@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
-import { FilterContext } from './context/filter-context';
+// import { FilterContext } from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 import Loading from './components/Loading/Loading';
 
 function App() {
 
-  const filterContext = useContext(FilterContext);
+  // const filterContext = useContext(FilterContext);
 
   // console.log(filterContext);
 
@@ -44,7 +44,6 @@ function App() {
   const currencies = useQuery(GET_CURRENCIES);
 
   // menu needs lang and currencies, also populations
-  // just show loading on the Cards component
 
   if (languages.loading || currencies.loading) {
     return (
