@@ -4,8 +4,9 @@ import { useQuery, gql } from '@apollo/client';
 import { FilterContext } from '../../context/filter-context';
 import classes from './Cards.module.css'
 import Card from '../Card/Card';
-import Loading from '../Loading/Loading';
-
+import Loading from '../Messages/Loading/Loading';
+import Error from '../Messages/Error/Error';
+import NoResults from '../Messages/NoResults/NoResults';
 
 const Cards = (props) => {
 
@@ -58,7 +59,14 @@ const Cards = (props) => {
     if (countries.error) {
         return (
             <div className={classes.Cards}>
-                Error
+                <Error />
+            </div>
+        );
+    }
+    if (countries.data.Country.length === 0) {
+        return (
+            <div className={classes.Cards}>
+                <NoResults />
             </div>
         );
     }
