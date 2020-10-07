@@ -1,0 +1,6 @@
+svg.hamburger {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    fill: rgb(46, 46, 102);
+}

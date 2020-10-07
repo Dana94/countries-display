@@ -8,6 +8,7 @@ import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 import Loading from './components/Messages/Loading/Loading';
 import Error from './components/Messages/Error/Error';
+import Hamburger from './components/Menu/Hamburger/Hamburger';
 
 function App() {
 
@@ -84,6 +85,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+        {/* <Hamburger /> */}
         <Cards />
       </header>
     </div>
