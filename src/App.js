@@ -6,7 +6,8 @@ import './App.css';
 // import { FilterContext } from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
-import Loading from './components/Loading/Loading';
+import Loading from './components/Messages/Loading/Loading';
+import Error from './components/Messages/Error/Error';
 
 function App() {
 
@@ -58,7 +59,7 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <p>Error :(</p>
+          <Error />
         </header>
       </div>
     );

@@ -5,10 +5,6 @@
     position: relative;
     width: 80px;
     height: 80px;
-
-    /* display: flex;
-    justify-content: center;
-    align-self: center; */
     margin-top: 10%;
   }
   .lds-default div {
