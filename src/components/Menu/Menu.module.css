@@ -7,6 +7,7 @@
 }
 
 .Filters {
+    background-color: rgb(46, 46, 102);
     position: fixed;
     width: inherit;
     height: 60%;
@@ -67,3 +68,26 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+
+
+.Menu.Mobile {
+    width: 100%;
+}
+
+.Filters.Mobile {
+    height: 100%;
+}
+
+fieldset.Mobile {
+    height: 45%;
+}
+
+@media (max-width: 768px) {
+    .Menu {
+        width: 100%;
+    }
+    .Filters {
+      position: relative;
+    }
+  }
