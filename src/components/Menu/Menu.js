@@ -13,10 +13,18 @@ const Menu = React.memo(props => {
         filterContext.setCurrencies(props.currencies.map(curr => curr.code));
     }, [])
 
+    const menuClasses = [classes.Menu];
+
+    if (!filterContext.menuOpen) {
+        menuClasses.push(classes.Close)
+    }
+
     return (
-        <div className={classes.Menu}>
+        <div className={menuClasses.join(" ")}>
             <div className={classes.Filters}>
-                Menu Filters
+                <div className={classes.Title}>
+                    Menu Filters
+                </div>
                 <hr />
                 <fieldset className={classes.Scroll}>
                     <div className={classes.FilterTitle}>

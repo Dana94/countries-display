@@ -11,6 +11,7 @@ const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
     // const [filterPopulation, setPopulation] = useState(0);
     const [filterCurrencies, setFilterCurrencies] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
 
 
     const toggleSelectHandler = (select, listType, item) => {
@@ -36,6 +37,10 @@ const FilterContextProvider = props => {
         setFilterCurrencies(langs);
     }
 
+    const setMenuOpenStatus = status => {
+        setMenuOpen(status);
+    }
+
     return (
         <FilterContext.Provider
             value={{
@@ -46,6 +51,8 @@ const FilterContextProvider = props => {
                 setCurrencies,
                 // population: filterPopulation,
                 currencies: filterCurrencies,
+                menuOpen,
+                setMenuOpenStatus
             }}>
             {props.children}
         </FilterContext.Provider>

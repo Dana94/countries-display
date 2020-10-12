@@ -106,3 +106,12 @@ fieldset.Mobile {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+.Menu.Close {
+    display: none;
+}
+
+.Title {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+}

@@ -3,6 +3,7 @@ svg.hamburger {
     right: 1rem;
     top: 1rem;
     fill: rgb(46, 46, 102);
+    z-index: 200;
 }
 
 svg.hamburger.open {
