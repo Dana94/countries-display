@@ -85,7 +85,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
-        {/* <Hamburger /> */}
+        <Hamburger />
         <Cards />
       </header>
     </div>

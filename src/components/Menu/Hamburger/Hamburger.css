@@ -4,3 +4,17 @@ svg.hamburger {
     top: 1rem;
     fill: rgb(46, 46, 102);
 }
+
+svg.hamburger.open {
+    fill: rgb(46, 46, 102);
+}
+
+svg.hamburger.close {
+    fill: #fafbfc;
+}
+
+@media (min-width: 769px) {
+    svg.hamburger {
+        display: none;
+    }
+}

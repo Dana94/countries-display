@@ -12,3 +12,9 @@
     width: 80%;
     padding-top: 4rem;
 }
+
+@media (max-width: 768px) {
+    .Cards {
+        width: 100%;
+    }
+}

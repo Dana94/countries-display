@@ -4,6 +4,7 @@
     width: 20%;
     font-size: 1rem;
 
+    z-index: 100; /* to cover countries in mobile when toggled open */
 }
 
 .Filters {
@@ -88,6 +89,20 @@ fieldset.Mobile {
         width: 100%;
     }
     .Filters {
-      position: relative;
+        top: 0;
+        height: 100%;
     }
-  }
+
+    fieldset {
+        height: 45%;
+    }
+     /* repeated twice */
+    fieldset.population {
+        height: 10%;
+    }
+
+    .List {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
