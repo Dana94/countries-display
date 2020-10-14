@@ -84,6 +84,12 @@ fieldset.Mobile {
     height: 45%;
 }
 
+.Title {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     .Menu {
         width: 100%;
@@ -105,13 +111,10 @@ fieldset.Mobile {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
-}
-.Menu.Close {
-    display: none;
+
+    .Menu.Close {
+        display: none;
+    }
 }
 
-.Title {
-    padding: 1.5rem;
-    display: flex;
-    justify-content: center;
-}
+
