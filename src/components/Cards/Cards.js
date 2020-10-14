@@ -11,9 +11,6 @@ import NoResults from '../Messages/NoResults/NoResults';
 const Cards = (props) => {
 
     const filterContext = useContext(FilterContext);
-
-    // console.log(filterContext);
-
     // population filter (ex: population_gt)
 
     let filters = {

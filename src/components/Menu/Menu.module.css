@@ -3,7 +3,6 @@
     color: white;
     width: 20%;
     font-size: 1rem;
-
     z-index: 100; /* to cover countries in mobile when toggled open */
 }
 
@@ -11,7 +10,7 @@
     background-color: rgb(46, 46, 102);
     position: fixed;
     width: inherit;
-    height: 60%;
+    height: 100%;
 
 }
 
@@ -21,7 +20,7 @@
 
 fieldset {
     border: none;
-    height: 30%;
+    height: 35%;
     overflow-x: hidden;
 }
 
@@ -70,8 +69,6 @@ button:hover {
     cursor: pointer;
 }
 
-
-
 .Menu.Mobile {
     width: 100%;
 }
@@ -116,5 +113,3 @@ fieldset.Mobile {
         display: none;
     }
 }
-
-
