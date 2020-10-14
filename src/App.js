@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
 
-// import { FilterContext } from './context/filter-context';
+import { FilterContext } from './context/filter-context';
 import Menu from './components/Menu/Menu';
 import Cards from './components/Cards/Cards';
 import Loading from './components/Messages/Loading/Loading';
 import Error from './components/Messages/Error/Error';
 import Hamburger from './components/Menu/Hamburger/Hamburger';
+import Cross from './components/Menu/Cross/Cross';
 
 function App() {
 
-  // const filterContext = useContext(FilterContext);
+  const filterContext = useContext(FilterContext);
 
   // console.log(filterContext);
 
@@ -81,11 +82,17 @@ function App() {
   //   }
   // });
 
+  let icon = <Hamburger />;
+
+  if(filterContext.menuOpen) {
+    icon = <Cross />;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
-        <Hamburger />
+        {icon}
         <Cards />
       </header>
     </div>
