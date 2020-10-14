@@ -9,6 +9,12 @@
     column-gap: 1.5rem;
     row-gap: 5.5rem; */
 
-    width: 85%;
+    width: 80%;
     padding-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .Cards {
+        width: 100%;
+    }
 }

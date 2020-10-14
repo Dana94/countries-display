@@ -1,12 +1,14 @@
 .Menu {
     background-color: rgb(46, 46, 102);
     color: white;
-    width: 15%;
+    width: 20%;
     font-size: 1rem;
 
+    z-index: 100; /* to cover countries in mobile when toggled open */
 }
 
 .Filters {
+    background-color: rgb(46, 46, 102);
     position: fixed;
     width: inherit;
     height: 60%;
@@ -67,3 +69,52 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+
+
+.Menu.Mobile {
+    width: 100%;
+}
+
+.Filters.Mobile {
+    height: 100%;
+}
+
+fieldset.Mobile {
+    height: 45%;
+}
+
+.Title {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .Menu {
+        width: 100%;
+    }
+    .Filters {
+        top: 0;
+        height: 100%;
+    }
+
+    fieldset {
+        height: 45%;
+    }
+     /* repeated twice */
+    fieldset.population {
+        height: 10%;
+    }
+
+    .List {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .Menu.Close {
+        display: none;
+    }
+}
+
+
