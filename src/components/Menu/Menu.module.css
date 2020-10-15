@@ -55,6 +55,8 @@ label {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 button {
@@ -63,6 +65,10 @@ button {
     border: 0;
     border-radius: 5px;
     padding: 6px;
+}
+
+legend {
+    margin-bottom: .5rem;
 }
 
 button:hover {
