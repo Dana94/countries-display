@@ -15,8 +15,6 @@ function App() {
 
   const filterContext = useContext(FilterContext);
 
-  // console.log(filterContext);
-
   const GET_LANGUAGES = gql`
     query GetLanguages {
       Language {
@@ -45,8 +43,6 @@ function App() {
 
   const languages = useQuery(GET_LANGUAGES);
   const currencies = useQuery(GET_CURRENCIES);
-
-  // menu needs lang and currencies, also populations
 
   if (languages.loading || currencies.loading) {
     return (

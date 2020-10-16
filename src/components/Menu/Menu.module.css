@@ -3,7 +3,6 @@
     color: white;
     width: 20%;
     font-size: 1rem;
-
     z-index: 100; /* to cover countries in mobile when toggled open */
 }
 
@@ -11,7 +10,7 @@
     background-color: rgb(46, 46, 102);
     position: fixed;
     width: inherit;
-    height: 60%;
+    height: 100%;
 
 }
 
@@ -21,7 +20,7 @@
 
 fieldset {
     border: none;
-    height: 30%;
+    height: 35%;
     overflow-x: hidden;
 }
 
@@ -56,6 +55,8 @@ label {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 button {
@@ -66,11 +67,13 @@ button {
     padding: 6px;
 }
 
+legend {
+    margin-bottom: .5rem;
+}
+
 button:hover {
     cursor: pointer;
 }
-
-
 
 .Menu.Mobile {
     width: 100%;
@@ -102,7 +105,7 @@ fieldset.Mobile {
     fieldset {
         height: 45%;
     }
-     /* repeated twice */
+
     fieldset.population {
         height: 10%;
     }
@@ -117,4 +120,8 @@ fieldset.Mobile {
     }
 }
 
-
+@media (max-width: 500px) {
+    .List {
+        grid-template-columns: 1fr 1fr;
+    }
+}
