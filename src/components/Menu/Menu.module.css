@@ -105,7 +105,7 @@ fieldset.Mobile {
     fieldset {
         height: 45%;
     }
-     /* repeated twice */
+
     fieldset.population {
         height: 10%;
     }
@@ -117,5 +117,11 @@ fieldset.Mobile {
 
     .Menu.Close {
         display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .List {
+        grid-template-columns: 1fr 1fr;
     }
 }
