@@ -9,8 +9,13 @@ export const FilterContext = React.createContext({
 
 const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
-    // const [filterPopulation, setPopulation] = useState(0);
+
+    const [filterPopulation, setFilterPopulation] = useState(0);
+    const [minFilterPopulation, setMinFilterPopulation] = useState(0);
+    const [maxFilterPopulation, setMaxFilterPopulation] = useState(0);
+
     const [filterCurrencies, setFilterCurrencies] = useState([]);
+
     const [menuOpen, setMenuOpen] = useState(false);
 
 
@@ -41,16 +46,32 @@ const FilterContextProvider = props => {
         setMenuOpen(status);
     }
 
+    const setMinPopulation = min => {
+        setMinFilterPopulation(min);
+    }
+
+    const setMaxPopulation = min => {
+        setMaxFilterPopulation(min);
+    }
+
     return (
         <FilterContext.Provider
             value={{
-                languages: filterLanguages,
                 selectAll,
+
+                languages: filterLanguages,
                 toggleSelect: toggleSelectHandler,
                 setLanguages,
+
+                population: filterPopulation,
+                minPopulation: minFilterPopulation,
+                maxPopulation: maxFilterPopulation,
+                setMinPopulation,
+                setMaxPopulation,
+
                 setCurrencies,
-                // population: filterPopulation,
                 currencies: filterCurrencies,
+
                 menuOpen,
                 setMenuOpenStatus
             }}>

@@ -4,9 +4,10 @@ import classes from './Menu.module.css';
 import { FilterContext } from '../../context/filter-context'
 
 const Menu = React.memo(props => {
-    // const [population, setPopulation] = useState(props.maxPopulation);
 
     const filterContext = useContext(FilterContext);
+
+    console.log(filterContext)
 
     useEffect(() => {
         filterContext.setLanguages(props.languages.map(lang => lang.iso639_2));

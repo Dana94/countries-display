@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
@@ -28,6 +28,8 @@ function App() {
     }
   `;
 
+  const languages = useQuery(GET_LANGUAGES);
+
   const GET_CURRENCIES = gql`
     query GetCurrencies {
       Currency{
@@ -41,8 +43,43 @@ function App() {
     }
   `;
 
-  const languages = useQuery(GET_LANGUAGES);
   const currencies = useQuery(GET_CURRENCIES);
+
+  let filters = {
+    officialLanguages_some: { iso639_2_in: filterContext.languages },
+    currencies_some: { code_in: filterContext.currencies }
+  };
+
+  const GET_COUNTRIES = gql`
+  query GetCountry($filter: _CountryFilter) {
+      Country(filter: $filter) {
+          _id
+          name
+          flag {
+              svgFile
+          }
+          officialLanguages {
+              name
+          }
+          currencies {
+              name
+              _id
+          }
+          population
+      }
+  }
+`;
+
+  const countries = useQuery(GET_COUNTRIES,
+    {
+      variables: {
+        filter: filters
+      }
+    }
+  );
+
+  console.log(countries)
+
 
   if (languages.loading || currencies.loading) {
     return (
@@ -63,24 +100,9 @@ function App() {
     );
   }
 
-  // let maxPopulation = 0;
-  // let minPopulation = 0;
-
-  // countries.data.Country.forEach(country => {
-  //   if (minPopulation === 0) {
-  //     minPopulation = country.population
-  //   }
-  //   if (country.population > maxPopulation) {
-  //     maxPopulation = country.population;
-  //   }
-  //   else if (country.population < minPopulation) {
-  //     minPopulation = country.population;
-  //   }
-  // });
-
   let icon = <Hamburger />;
 
-  if(filterContext.menuOpen) {
+  if (filterContext.menuOpen) {
     icon = <Cross />;
   }
 
@@ -89,7 +111,13 @@ function App() {
       <header className="App-header">
         <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
         {icon}
-        <Cards />
+        <Cards countries={
+          {
+            loading: countries.loading,
+            error: countries.error,
+            data: countries.data?.Country
+          }
+        } />
       </header>
     </div>
   );
