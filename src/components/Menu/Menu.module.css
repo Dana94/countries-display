@@ -49,6 +49,7 @@ label {
 .populationRange {
     display: block;
     margin: auto;
+    width: 80%;
 }
 
 .FilterTitle {

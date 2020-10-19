@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 export const FilterContext = React.createContext({
     languages: [],
-    // allLanguages: true,
     // population: null,
     currencies: []
 });

@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import classes from './Menu.module.css';
 import { FilterContext } from '../../context/filter-context'
 
-const Menu = React.memo(props => {
+const Menu = props => {
+
+    const [population, setPopulation] = useState(props.maxPopulation);
 
     const filterContext = useContext(FilterContext);
-
-    console.log(filterContext)
 
     useEffect(() => {
         filterContext.setLanguages(props.languages.map(lang => lang.iso639_2));
@@ -55,7 +55,7 @@ const Menu = React.memo(props => {
                 </div>
                 <hr />
                 <fieldset className={classes.population}>
-                    {/* <label htmlFor="population">Population</label> {Math.floor(population)} */}
+                    <label htmlFor="population">Population</label> {Math.floor(population)}
                     <input
                         type="range"
                         id="population"
@@ -64,7 +64,7 @@ const Menu = React.memo(props => {
                         min={props.minPopulation}
                         max={props.maxPopulation}
                         step="any"
-                    // onChange={event => setPopulation(event.target.value)}
+                        onChange={event => setPopulation(event.target.value)}
                     />
                 </fieldset>
                 <hr />
@@ -99,6 +99,6 @@ const Menu = React.memo(props => {
             </div>
         </div>
     )
-});
+};
 
 export default Menu;

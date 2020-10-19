@@ -46,25 +46,25 @@ const Cards = (props) => {
     //     }
     // );
 
-    let maxPopulation = 0;
-    let minPopulation = 0;
+    // let maxPopulation = 0;
+    // let minPopulation = 0;
 
-    if (props.countries.data) {
-        props.countries.data.forEach(country => {
-            if (minPopulation === 0) {
-                minPopulation = country.population
-            }
-            if (country.population > maxPopulation) {
-                maxPopulation = country.population;
-            }
-            else if (country.population < minPopulation) {
-                minPopulation = country.population;
-            }
-        });
+    // if (props.countries.data) {
+    //     props.countries.data.forEach(country => {
+    //         if (minPopulation === 0) {
+    //             minPopulation = country.population
+    //         }
+    //         if (country.population > maxPopulation) {
+    //             maxPopulation = country.population;
+    //         }
+    //         else if (country.population < minPopulation) {
+    //             minPopulation = country.population;
+    //         }
+    //     });
 
-        filterContext.setMaxPopulation(maxPopulation);
-        filterContext.setMinPopulation(minPopulation);
-    }
+    //     filterContext.setMaxPopulation(maxPopulation);
+    //     filterContext.setMinPopulation(minPopulation);
+    // }
 
 
     if (props.countries.loading) {

@@ -78,7 +78,26 @@ function App() {
     }
   );
 
-  console.log(countries)
+  // console.log(countries)
+  let maxPopulation = 0;
+  let minPopulation = 0;
+
+    if (countries.data?.Country) {
+        countries.data.Country.forEach(country => {
+            if (minPopulation === 0) {
+                minPopulation = country.population
+            }
+            if (country.population > maxPopulation) {
+                maxPopulation = country.population;
+            }
+            else if (country.population < minPopulation) {
+                minPopulation = country.population;
+            }
+        });
+
+        // filterContext.setMaxPopulation(maxPopulation);
+        // filterContext.setMinPopulation(minPopulation);
+    }
 
 
   if (languages.loading || currencies.loading) {
@@ -109,7 +128,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+        <Menu languages={languages.data.Language} currencies={currencies.data.Currency}
+        minPopulation={minPopulation} maxPopulation={maxPopulation} />
         {icon}
         <Cards countries={
           {
