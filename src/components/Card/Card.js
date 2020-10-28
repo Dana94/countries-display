@@ -6,7 +6,7 @@ const Card = (props) => {
 
     return (
         <div className={classes.Card}>
-            <img src={props.country.flag.svgFile} alt={`${props.country.name}'s Flag`} />
+            <img src={props.country.flag.svgFile} alt={`${props.country.name}'s Flag`} className={classes[props.country.name]} />
             <div className={classes.Content}>
                 <p>{props.country.name}</p>
             </div>
