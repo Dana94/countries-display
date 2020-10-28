@@ -21,6 +21,12 @@ img {
     box-shadow: 0 3px 6px rgba(149,157,165,.15);
 }
 
+/* Nepal flag that was causing its name to be pushed down */
+img.Nepal {
+    width: 40%;
+    transform: translate(70%, -50%);
+}
+
 .Content {
     margin-top: -3rem;
 }

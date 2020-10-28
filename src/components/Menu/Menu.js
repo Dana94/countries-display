@@ -3,8 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import classes from './Menu.module.css';
 import { FilterContext } from '../../context/filter-context'
 
-const Menu = React.memo(props => {
-    // const [population, setPopulation] = useState(props.maxPopulation);
+const Menu = props => {
 
     const filterContext = useContext(FilterContext);
 
@@ -53,20 +52,6 @@ const Menu = React.memo(props => {
                 <div>
                 </div>
                 <hr />
-                <fieldset className={classes.population}>
-                    {/* <label htmlFor="population">Population</label> {Math.floor(population)} */}
-                    <input
-                        type="range"
-                        id="population"
-                        className={classes.populationRange}
-                        name="population"
-                        min={props.minPopulation}
-                        max={props.maxPopulation}
-                        step="any"
-                    // onChange={event => setPopulation(event.target.value)}
-                    />
-                </fieldset>
-                <hr />
                 <fieldset className={classes.Scroll}>
                     <div className={classes.FilterTitle}>
                         <legend>Currencies</legend>
@@ -98,6 +83,6 @@ const Menu = React.memo(props => {
             </div>
         </div>
     )
-});
+};
 
 export default Menu;
