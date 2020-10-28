@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 
 export const FilterContext = React.createContext({
     languages: [],
-    // allLanguages: true,
-    // population: null,
     currencies: []
 });
 
 const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
-    // const [filterPopulation, setPopulation] = useState(0);
     const [filterCurrencies, setFilterCurrencies] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
-
 
     const toggleSelectHandler = (select, listType, item) => {
         let newList;
@@ -49,7 +45,6 @@ const FilterContextProvider = props => {
                 toggleSelect: toggleSelectHandler,
                 setLanguages,
                 setCurrencies,
-                // population: filterPopulation,
                 currencies: filterCurrencies,
                 menuOpen,
                 setMenuOpenStatus

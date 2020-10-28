@@ -63,21 +63,6 @@ function App() {
     );
   }
 
-  // let maxPopulation = 0;
-  // let minPopulation = 0;
-
-  // countries.data.Country.forEach(country => {
-  //   if (minPopulation === 0) {
-  //     minPopulation = country.population
-  //   }
-  //   if (country.population > maxPopulation) {
-  //     maxPopulation = country.population;
-  //   }
-  //   else if (country.population < minPopulation) {
-  //     minPopulation = country.population;
-  //   }
-  // });
-
   let icon = <Hamburger />;
 
   if(filterContext.menuOpen) {

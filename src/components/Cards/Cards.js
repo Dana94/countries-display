@@ -11,7 +11,6 @@ import NoResults from '../Messages/NoResults/NoResults';
 const Cards = (props) => {
 
     const filterContext = useContext(FilterContext);
-    // population filter (ex: population_gt)
 
     let filters = {
         officialLanguages_some: { iso639_2_in: filterContext.languages },
@@ -33,7 +32,6 @@ const Cards = (props) => {
                     name
                     _id
                 }
-                population
             }
         }
     `;

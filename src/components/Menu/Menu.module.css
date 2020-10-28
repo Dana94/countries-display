@@ -20,12 +20,8 @@
 
 fieldset {
     border: none;
-    height: 35%;
+    height: 42%;
     overflow-x: hidden;
-}
-
-fieldset.population {
-    height: 10%;
 }
 
 fieldset.Scroll::-webkit-scrollbar {
@@ -44,11 +40,6 @@ fieldset.Scroll::-webkit-scrollbar-track {
 
 label {
     text-align: left;
-}
-
-.populationRange {
-    display: block;
-    margin: auto;
 }
 
 .FilterTitle {
@@ -104,10 +95,6 @@ fieldset.Mobile {
 
     fieldset {
         height: 45%;
-    }
-
-    fieldset.population {
-        height: 10%;
     }
 
     .List {
