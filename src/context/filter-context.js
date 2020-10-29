@@ -8,7 +8,10 @@ export const FilterContext = React.createContext({
 const FilterContextProvider = props => {
     const [filterLanguages, setFilterLanguages] = useState([]);
     const [filterCurrencies, setFilterCurrencies] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+
 
     const toggleSelectHandler = (select, listType, item) => {
         let newList;
@@ -37,6 +40,14 @@ const FilterContextProvider = props => {
         setMenuOpen(status);
     }
 
+    const setModalOpenStatus = status => {
+        setModalOpen(status);
+    }
+
+    const setCountry = country => {
+        setSelectedCountry(country);
+    }
+
     return (
         <FilterContext.Provider
             value={{
@@ -47,7 +58,11 @@ const FilterContextProvider = props => {
                 setCurrencies,
                 currencies: filterCurrencies,
                 menuOpen,
-                setMenuOpenStatus
+                setMenuOpenStatus,
+                modalOpen,
+                setModalOpenStatus,
+                selectedCountry,
+                setCountry
             }}>
             {props.children}
         </FilterContext.Provider>
