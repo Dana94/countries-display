@@ -4,6 +4,7 @@ import { useQuery, gql } from '@apollo/client';
 import { FilterContext } from '../../context/filter-context';
 import classes from './Cards.module.css'
 import Card from '../Card/Card';
+// import Modal from '../Modal/Modal';
 import Loading from '../Messages/Loading/Loading';
 import Error from '../Messages/Error/Error';
 import NoResults from '../Messages/NoResults/NoResults';
@@ -71,6 +72,7 @@ const Cards = (props) => {
             {
                 countries.data.Country.map(country => <Card country={country} key={country._id} />)
             }
+            {/* <Modal /> */}
         </div>
     )
 }
