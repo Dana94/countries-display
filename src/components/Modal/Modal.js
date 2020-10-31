@@ -12,24 +12,29 @@ const Modal = props => {
     return (
         <div className="modal">
             {/* <Cross /> */}
-            <img
-                src={filterContext.selectedCountry?.flag.svgFile}
-                alt={`${filterContext.selectedCountry?.name}'s Flag`}
-                className="modal-flag"
-            />
-            {filterContext.selectedCountry?.name}
-            <p id="languages">Languages</p>
-            <ul aria-labelledby="languages">
+            <div className="modal-title">
+                <img
+                    src={filterContext.selectedCountry?.flag.svgFile}
+                    alt={`${filterContext.selectedCountry?.name}'s Flag`}
+                    className="modal-flag"
+                />
+                <span>
+
+                    {filterContext.selectedCountry?.name}
+                </span>
+            </div>
+            <div>
+                Languages:
                 {
-                    filterContext.selectedCountry?.officialLanguages.map(lang => <li key={lang.name}>{lang.name}</li>)
+                    filterContext.selectedCountry?.officialLanguages.map((lang, index) => ` ${lang.name}${index + 1 < filterContext.selectedCountry?.officialLanguages.length ? ',' : ''}`)
                 }
-            </ul>
-            <p id="currencies">Currencies</p>
-            <ul aria-labelledby="currencies">
+            </div>
+            <div>
+                Currencies:
                 {
-                    filterContext.selectedCountry?.currencies.map(currency => currency.name === "null" ? null : <li key={currency.name}>{currency.name}</li>)
+                    filterContext.selectedCountry?.currencies.map((currency, index) => currency.name === "null" ? null : ` ${currency.name}${index + 1 < filterContext.selectedCountry?.currencies.length ? ',' : ''}`)
                 }
-            </ul>
+            </div>
         </div>
     )
 };

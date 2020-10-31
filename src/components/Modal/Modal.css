@@ -10,10 +10,22 @@
     flex-direction: column;
     justify-content: center;
     font-size: 1.5rem;
+    text-align: left;
 }
 
 .modal-flag {
-    transform: translate(50%, -50%);
+    transform: none;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal-title span {
+    width: 100%;
+    text-align: center;
 }
 
 ul {
@@ -27,4 +39,10 @@ ul {
 
 p {
     margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 60%;
+    }
 }
