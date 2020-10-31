@@ -18,16 +18,16 @@ const Modal = props => {
                 className="modal-flag"
             />
             {filterContext.selectedCountry?.name}
-            <p id="languages">Languages:</p>
+            <p id="languages">Languages</p>
             <ul aria-labelledby="languages">
                 {
                     filterContext.selectedCountry?.officialLanguages.map(lang => <li key={lang.name}>{lang.name}</li>)
                 }
             </ul>
-            <p id="currencies">Currencies:</p>
+            <p id="currencies">Currencies</p>
             <ul aria-labelledby="currencies">
                 {
-                    filterContext.selectedCountry?.currencies.map(currency => <li key={currency.name}>{currency.name}</li>)
+                    filterContext.selectedCountry?.currencies.map(currency => currency.name === "null" ? null : <li key={currency.name}>{currency.name}</li>)
                 }
             </ul>
         </div>
