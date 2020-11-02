@@ -34,6 +34,10 @@
     text-align: center;
 }
 
+.modal-content {
+    position: relative;
+}
+
 ul {
     font-size: 1rem;
     display: flex;
@@ -51,4 +55,23 @@ p {
     .modal {
         width: 70%;
     }
+}
+
+.modal-cross {
+    position: absolute;
+    right: 0;
+}
+
+.modal-cross:hover {
+    cursor: pointer;
+}
+
+.modal-cross rect:nth-child(1) {
+    transform-origin: center;
+    transform: rotate(45deg);
+}
+
+.modal-cross rect:nth-child(2) {
+    transform-origin: center;
+    transform: rotate(-45deg);
 }
