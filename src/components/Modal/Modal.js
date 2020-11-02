@@ -19,18 +19,17 @@ const Modal = props => {
                     className="modal-flag"
                 />
                 <span>
-
                     {filterContext.selectedCountry?.name}
                 </span>
             </div>
             <div>
-                Languages:
+                <span>Languages:</span>
                 {
                     filterContext.selectedCountry?.officialLanguages.map((lang, index) => ` ${lang.name}${index + 1 < filterContext.selectedCountry?.officialLanguages.length ? ',' : ''}`)
                 }
             </div>
             <div>
-                Currencies:
+                <span>Currencies:</span>
                 {
                     filterContext.selectedCountry?.currencies.map((currency, index) => currency.name === "null" ? null : ` ${currency.name}${index + 1 < filterContext.selectedCountry?.currencies.length ? ',' : ''}`)
                 }
