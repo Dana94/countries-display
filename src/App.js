@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { useQuery, gql } from '@apollo/client';
 
 import './App.css';
@@ -65,17 +65,20 @@ function App() {
 
   let icon = <Hamburger />;
 
-  if(filterContext.menuOpen) {
+  if (filterContext.menuOpen) {
     icon = <Cross />;
   }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
-        {icon}
-        <Cards />
-      </header>
+      <div className="overlay">
+        <header className="App-header">
+          {filterContext.modalOpen ? <div className="Overlay"></div> : null}
+          <Menu languages={languages.data.Language} currencies={currencies.data.Currency} />
+          {icon}
+          <Cards />
+        </header>
+      </div>
     </div>
   );
 }

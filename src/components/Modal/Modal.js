@@ -2,20 +2,17 @@ import React, { useContext } from 'react';
 
 import './Modal.css';
 import { FilterContext } from '../../context/filter-context'
-// import Cross from '../Menu/Cross/Cross';
 
 const Modal = props => {
 
     const filterContext = useContext(FilterContext);
 
-    // console.log(filterContext.selectedCountry)
     const closeModal = () => {
         filterContext.setModalOpenStatus(false);
     }
 
     return (
         <div className="modal">
-            {/* <Cross /> */}
             <div className="modal-content">
                 <svg viewBox="0 0 100 80" width="20" height="20" className="modal-cross" onClick={closeModal}>
                     <rect y="30" width="100" height="20" rx="8"></rect>
